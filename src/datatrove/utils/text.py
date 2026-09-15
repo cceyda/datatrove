@@ -259,6 +259,8 @@ def simplify_text(text: str, config=DEF_TEXT_NORM_CONFIG) -> str:
 
 # from https://tedboy.github.io/nlps/_modules/nltk/util.html#ngrams
 def ngrams(sequence: Iterable, n: int):
+    if len(sequence) < n:
+        return [tuple(sequence)]
     iterables = tee(sequence, n)
 
     for i, sub_iterable in enumerate(iterables):  # For each window,
